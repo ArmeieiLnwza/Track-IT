@@ -190,7 +190,7 @@ for (let i=0; i<50; i++){
   <nav>
     <a href="index.html">หน้าแรก</a>
     <a href="equipment.html">ค้นหาครุภัณฑ์</a>
-    <a href="index.html?logout=success">ออกจากระบบ</a>
+    <a href="#" onclick="logout()">ออกจากระบบ</a>
   </nav>
 </header>
 
@@ -246,8 +246,21 @@ function closePopup(){
     window.history.replaceState({}, '', "index.html");
   }
 }
+function logout(){
+    // ล้างค่า userRole
+    localStorage.removeItem("userRole"); 
+
+    // แสดง popup
+    popupText.innerText = "ออกจากระบบแล้ว";
+    popupIcon.innerText = "✔";
+    popup.style.display = "flex";
+
+    // รอ 2 วินาที แล้วไปหน้า login
+    setTimeout(() => {
+        window.location.href = "login.html";
+    }, 2000);
+}
 </script>
 
 </body>
 </html>
-
